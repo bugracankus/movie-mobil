@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, Image, TouchableWithoutFeedback, Text } from 'react-native'
+import { View, StyleSheet, Image, TouchableWithoutFeedback, Text, TouchableOpacity } from 'react-native'
 import Layout from '../constants/Layout';
-import {ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import {ScrollView,  } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 const movieData = [
     {
         id: 0,
@@ -34,6 +35,7 @@ const movieData = [
 
 //? SimilarMovies LIST DESIGN
 const SimilarMovies: React.FC = () => {
+    const navigation: any = useNavigation();
     return (
         <View style={styles.main}>
             <ScrollView
@@ -47,7 +49,7 @@ const SimilarMovies: React.FC = () => {
                             <TouchableWithoutFeedback
                                 key={index}
                             >
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress={() => navigation.navigate("MovieDetailPage")}>
                                     <View >
                                         <Image
                                             source={item.moviePoster}
@@ -57,7 +59,6 @@ const SimilarMovies: React.FC = () => {
                                         <Text style={styles.movieName}>{item.movieName}</Text>
                                     </View>
                                 </TouchableOpacity>
-
                             </TouchableWithoutFeedback>
                         )
                     })

@@ -7,13 +7,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomePage from '../screens/HomePage';
 import MovieDetailPage from '../screens/MovieDetailPage';
 import FamousDetailPage from '../screens/FamousDetailPage';
+import SearchPage from '../screens/SearchPage';
 
 const Stack = createStackNavigator();
 
 function MyStack() {
     return (
         <Stack.Navigator
-            initialRouteName='FamousDetailPage'
+            initialRouteName='HomePage'
             screenOptions={{
                 headerShown: false
             }}
@@ -29,6 +30,10 @@ function MyStack() {
             <Stack.Screen
                 name='FamousDetailPage'
                 component={FamousDetailPage}
+            />
+              <Stack.Screen
+                name='SearchPage'
+                component={SearchPage}
             />
         </Stack.Navigator>
     );

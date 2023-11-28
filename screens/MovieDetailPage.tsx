@@ -5,6 +5,7 @@ import { HStack, NativeBaseProvider, VStack } from 'native-base';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ImageBackground } from 'react-native';
 import SimilarMovies from '../component/SimilarMovies';
+import { useNavigation } from '@react-navigation/native';
 
 const castData = [
     {
@@ -31,6 +32,10 @@ const castData = [
 
 
 const MovieDetailPage: React.FC = () => {
+    const navigation: any = useNavigation();
+    const handleBackPress = () => {
+        navigation.goBack();
+    };
     return (
         <NativeBaseProvider>
             <View>
@@ -38,14 +43,14 @@ const MovieDetailPage: React.FC = () => {
                     <View style={{ flex: 1, height: Layout.window.height, }}>
                         {/* ---Movie Poster--- */}
                         <ImageBackground
-                            source={require("../assets/poster/moviePoster1.png")}
+                            source={require("../assets/poster/moviePoster4.jpg")}
                             alt=""
                             style={styles.poster}
                         >
                             {/* --Title--- */}
                             <View style={styles.title}>
                                 <HStack>
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={handleBackPress}>
                                         <View style={styles.tGround}>
                                             <Image
                                                 source={require("../assets/icon/goBack.png")}
@@ -107,7 +112,7 @@ const MovieDetailPage: React.FC = () => {
                                                     <TouchableWithoutFeedback
                                                         key={index}
                                                     >
-                                                        <TouchableOpacity>
+                                                        <TouchableOpacity onPress={() => navigation.navigate("FamousDetailPage")}>
                                                             <View style={styles.cGround}>
                                                                 <Image
                                                                     source={item.topCastImage}

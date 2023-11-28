@@ -7,7 +7,9 @@ import { HStack, NativeBaseProvider, VStack } from 'native-base';
 import Trending from '../component/Trending';
 import Upcoming from '../component/Upcoming';
 import TopRated from '../component/TopRated';
+import { useNavigation } from '@react-navigation/native';
 const HomePage: React.FC = () => {
+    const navigation: any = useNavigation();
     return (
         <NativeBaseProvider>
             <View style={styles.main}>
@@ -31,7 +33,7 @@ const HomePage: React.FC = () => {
                                     <Text style={styles.tText}>Movie Box</Text>
                                 </View>
                                 {/* ---searchicon--- */}
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress={() => navigation.navigate("SearchPage")}>
                                     <View style={styles.iGround}>
                                         <Image
                                             source={require("../assets/icon/searchIcon.png")}
@@ -85,8 +87,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     icon: {
-        width: 50,
-        height: 50,
+        width: 30,
+        height: 30,
         resizeMode: "contain",
     },
     tText: {

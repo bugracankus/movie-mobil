@@ -1,8 +1,8 @@
 import React from 'react';
 import Carousel from 'react-native-snap-carousel';
 import { View, StyleSheet, Image, TouchableOpacity } from 'react-native'
-
 import Layout from '../constants/Layout';
+import { useNavigation } from '@react-navigation/native';
 const movieData = [
     {
         id: 0,
@@ -14,16 +14,26 @@ const movieData = [
     },
     {
         id: 2,
-        moviePoster: require("../assets/poster/moviePoster1.png"),
+        moviePoster: require("../assets/poster/moviePoster3.jpg"),
+    },
+    {
+        id: 3,
+        moviePoster: require("../assets/poster/moviePoster4.jpg"),
+    },
+    {
+        id: 4,
+        moviePoster: require("../assets/poster/moviePoster5.png"),
     },
 ];
 const Trending: React.FC = () => {
+    const navigation: any = useNavigation();
     return (
         <View style={styles.main}>
             <Carousel
                 data={movieData}
                 renderItem={({ item }: any) => (
-                    <TouchableOpacity style={{width:Layout.window.width*0.4, alignSelf:"center"}}>
+                    <TouchableOpacity style={{ width: Layout.window.width * 0.4, alignSelf: "center" }} 
+                    onPress={() => navigation.navigate("MovieDetailPage")}>
                         <Image
                             source={item.moviePoster}
                             alt=''

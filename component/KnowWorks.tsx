@@ -2,7 +2,6 @@ import React from 'react';
 import { View, StyleSheet, Image, TouchableWithoutFeedback, Text } from 'react-native'
 import Layout from '../constants/Layout';
 import {ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/native';
 const movieData = [
     {
         id: 0,
@@ -33,10 +32,8 @@ const movieData = [
     },
 ];
 
-//? TopRated LIST DESIGN
-const TopRated: React.FC = () => {
-    const navigation: any = useNavigation();
-    
+//? KnowWorks LIST DESIGN
+const KnowWorks: React.FC = () => {
     return (
         <View style={styles.main}>
             <ScrollView
@@ -50,7 +47,7 @@ const TopRated: React.FC = () => {
                             <TouchableWithoutFeedback
                                 key={index}
                             >
-                                <TouchableOpacity  onPress={() => navigation.navigate("MovieDetailPage")}>
+                                <TouchableOpacity>
                                     <View >
                                         <Image
                                             source={item.moviePoster}
@@ -69,7 +66,7 @@ const TopRated: React.FC = () => {
         </View>
     )
 }
-export default TopRated;
+export default KnowWorks;
 
 const styles = StyleSheet.create({
     main: {

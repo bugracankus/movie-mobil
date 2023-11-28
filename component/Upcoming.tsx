@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Image, TouchableWithoutFeedback, Text } from 'react-native'
 import Layout from '../constants/Layout';
 import {ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 const movieData = [
     {
         id: 0,
@@ -34,7 +35,10 @@ const movieData = [
 
 //? UPCOMING LIST DESIGN
 const Upcoming: React.FC = () => {
+    const navigation: any = useNavigation();
+    
     return (
+        
         <View style={styles.main}>
             <ScrollView
                 horizontal
@@ -47,7 +51,7 @@ const Upcoming: React.FC = () => {
                             <TouchableWithoutFeedback
                                 key={index}
                             >
-                                <TouchableOpacity>
+                                <TouchableOpacity  onPress={() => navigation.navigate("MovieDetailPage")}>
                                     <View >
                                         <Image
                                             source={item.moviePoster}
